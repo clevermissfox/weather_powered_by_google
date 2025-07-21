@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/src/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App Powered by Google Maps</title>
+</head>
+
+<body>
+  <div class="weather-container">
+    <header>
+      <div id="search-modal" class="search-modal">
+        <h2>Enter a city</h2>
+        <div class="search-wrapper">
+          <input type="search" class="searchbar" id="searchbar" spellcheck="false">
+          <button class="search-btn" id="search-btn-modal">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24"
+              viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+              <path d="M21 21l-6 -6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="city-and-search-container">
+        <div>
+          <h1 data-current-location class="city">London, GB</h1>
+          <p data-current-date class="current-date">22 January, 2024</p>
+        </div>
+        <button class="search-btn-outer" id="search-btn-outer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="30" height="30"
+            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+            <path d="M21 21l-6 -6" />
+          </svg>
+        </button>
+      </div>
+      <div class="current-temp-and-icon-container">
+        <h2 data-current-temp class="current-temp">10&deg;</h2>
+        <div data-current-icon class="current-weather-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wind" viewBox="0 0 24 24"
+            stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24" />
+            <path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24" />
+            <path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24" />
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <section class="current-conditions">
+      <div class="card-layout wind-container">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wind" width="24" height="24"
+          viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24" />
+          <path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24" />
+          <path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24" />
+        </svg>
+        <span class="conditions-data" data-wind-speed>34 km/s</span>
+        <p class="conditions-label">Wind</p>
+      </div>
+      <div class="card-layout humidity-container">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-droplets" width="24" height="24"
+          viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path
+            d="M4.072 20.3a2.999 2.999 0 0 0 3.856 0a3.002 3.002 0 0 0 .67 -3.798l-2.095 -3.227a.6 .6 0 0 0 -1.005 0l-2.098 3.227a3.003 3.003 0 0 0 .671 3.798z" />
+          <path
+            d="M16.072 20.3a2.999 2.999 0 0 0 3.856 0a3.002 3.002 0 0 0 .67 -3.798l-2.095 -3.227a.6 .6 0 0 0 -1.005 0l-2.098 3.227a3.003 3.003 0 0 0 .671 3.798z" />
+          <path
+            d="M10.072 10.3a2.999 2.999 0 0 0 3.856 0a3.002 3.002 0 0 0 .67 -3.798l-2.095 -3.227a.6 .6 0 0 0 -1.005 0l-2.098 3.227a3.003 3.003 0 0 0 .671 3.798z" />
+        </svg>
+        <span class="conditions-data" data-humidity>63%</span>
+        <p class="conditions-label">Humidity</p>
+      </div>
+      <div class="card-layout rain-container">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-umbrella" width="24" height="24"
+          viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M4 12a8 8 0 0 1 16 0z" />
+          <path d="M12 12v6a2 2 0 0 0 4 0" />
+        </svg>
+        <span class="conditions-data" data-precipitation>0%</span>
+        <p class="conditions-label">Precipitation</p>
+      </div>
+    </section>
+
+    <section>
+      <div id="forecast-week-list" class="forecast-week-list">
+        <div class="card-layout">
+          <p day-date>Mon</p>
+          <div day-icon>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wind" width="34" height="34"
+              viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24" />
+              <path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24" />
+              <path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24" />
+            </svg>
+          </div>
+          <div class="forecast-temperatures-container">
+            <span day-temp-min>5&deg;</span> | <span day-temp-max>10&deg;</span>
+          </div>
+        </div>
+        <div class="card-layout">
+          <p day-date>Tue</p>
+          <div day-icon>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-snow" width="34"
+              height="34" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7" />
+              <path d="M11 15v.01m0 3v.01m0 3v.01m4 -4v.01m0 3v.01" />
+            </svg>
+          </div>
+          <div class="forecast-temperatures-container">
+            <span day-temp-min>6&deg;</span> | <span day-temp-max>13&deg;</span>
+          </div>
+        </div>
+        <div class="card-layout">
+          <p day-date>Wed</p>
+          <div day-icon>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wind" width="34" height="34"
+              viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24" />
+              <path d="M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24" />
+              <path d="M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24" />
+            </svg>
+          </div>
+          <div class="forecast-temperatures-container">
+            <span day-temp-min>7&deg;</span> | <span day-temp-max>11&deg;</span>
+          </div>
+        </div>
+        <div class="card-layout">
+          <p day-date>Thu</p>
+          <div day-icon>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-snow" width="34"
+              height="34" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7" />
+              <path d="M11 15v.01m0 3v.01m0 3v.01m4 -4v.01m0 3v.01" />
+            </svg>
+          </div>
+          <div class="forecast-temperatures-container">
+            <span day-temp-min>8&deg;</span> | <span day-temp-max>12&deg;</span>
+          </div>
+        </div>
+        <div class="card-layout">
+          <p day-date>Fri</p>
+          <div day-icon>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun" width="34" height="34"
+              viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+              <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+            </svg>
+          </div>
+          <div class="forecast-temperatures-container">
+            <span day-temp-min>3&deg;</span> | <span day-temp-max>9&deg;</span>
+          </div>
+        </div>
+        <div class="card-layout">
+          <p day-date>Sat</p>
+          <div day-icon>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-snow" width="34"
+              height="34" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7" />
+              <path d="M11 15v.01m0 3v.01m0 3v.01m4 -4v.01m0 3v.01" />
+            </svg>
+          </div>
+          <div class="forecast-temperatures-container">
+            <span day-temp-min>4&deg;</span> | <span day-temp-max>10&deg;</span>
+          </div>
+        </div>
+        <div class="card-layout">
+          <p day-date>Sun</p>
+          <div day-icon>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-snow" width="34"
+              height="34" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7" />
+              <path d="M11 15v.01m0 3v.01m0 3v.01m4 -4v.01m0 3v.01" />
+            </svg>
+          </div>
+          <div class="forecast-temperatures-container">
+            <span day-temp-min>7&deg;</span> | <span day-temp-max>11&deg;</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Use this as a template for the forecast days -->
+  <template class="card-layout">
+    <p day-date>Mon</p>
+    <div day-icon>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-cloud-snow" width="34" height="34"
+        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+        <path d="M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7" />
+        <path d="M11 15v.01m0 3v.01m0 3v.01m4 -4v.01m0 3v.01" />
+      </svg>
+    </div>
+    <div class="forecast-temperatures-container">
+      <span day-temp-min>-2&deg;</span> | <span day-temp-max>3&deg;</span>
+    </div>
+  </template>
+  <div class="overlay"></div>
+  <div class="box"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
