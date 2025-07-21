@@ -370,6 +370,7 @@ function setup() {
 
   getUserLocation();
   createDropdown();
+  appendScript();
 }
 
 // ============== HTML ============== \\
@@ -492,6 +493,18 @@ function setDailyForecastHTML(item, el) {
         `;
   }
   el.innerHTML = html;
+}
+
+function appendScript() {
+  const script = document.createElement("script");
+  script.setAttribute("async", "");
+  script.setAttribute(
+    "src",
+    "https://maps.googleapis.com/maps/api/js?key=" +
+      import.meta.env.VITE_GOOGLE_MAPS_API_KEY +
+      "&libraries=places&callback=initMap"
+  );
+  document.body.appendChild(script);
 }
 
 function init() {
